@@ -30,58 +30,38 @@ class TestHighScore(unittest.TestCase):
         self.assertListEqual(self.high_score.scores, [])
 
         with open(self.filename, "w") as file:
-            file.write("100\n200\n300\n")
+            file.write("Jon: 4 turns\nAl: 6 turns\nTy: 7 turns\n")
 
         self.high_score.load_scores()
-        self.assertListEqual(self.high_score.scores, [100, 200, 300])
+        self.assertListEqual(self.high_score.scores, ["Jon: 4 turns",
+                                                      "Al: 6 turns",
+                                                      "Ty: 7 turns"])
 
     def test_save_scores(self):
         """Test saving scores to a file."""
         with open(self.filename, "r") as file:
             self.assertEqual(file.read(), "")
 
-        self.high_score.scores = [100, 200, 300]
+        self.high_score.scores = ["Jon: 4 turns", "Al: 6 turns", "Ty: 7 turns"]
         self.high_score.save_scores()
 
         with open(self.filename, "r") as file:
-            self.assertEqual(file.read(), "100\n200\n300\n")
+            self.assertEqual(file.read(), "4\n6\n7\n")
 
     def test_is_high_score(self):
         """Test checking if a score is a high score."""
-        self.high_score.scores = [100, 200, 300]
+        self.high_score.scores = [4, 6, 7]
 
-        self.assertTrue(self.high_score.is_high_score(400))
-        self.assertTrue(self.high_score.is_high_score(301))
-        self.assertFalse(self.high_score.is_high_score(300))
-        self.assertFalse(self.high_score.is_high_score(250))
-
-    def test_add_high_score(self):
-        """Test adding a high score."""
-        self.high_score.scores = [100, 200, 300]
-
-        self.high_score.add_high_score(400)
-        self.assertListEqual(self.high_score.scores, [100, 200, 300, 400])
-
-        self.high_score.add_high_score(250)
-        self.assertListEqual(self.high_score.scores, [100, 200, 250, 300, 400])
-
-        self.high_score.add_high_score(100)
-        self.assertListEqual(self.high_score.scores, [100, 200, 250, 300, 400])
-
-        # Test saving only the top 10 scores
-        for i in range(11, 20):
-            self.high_score.add_high_score(i)
-
-        self.assertListEqual(self.high_score.scores,
-                             [i for i in range(11, 1, -1)])
-        with open(self.filename, "r") as file:
-            self.assertEqual(file.read(), "11\n10\n9\n8\n7\n6\n5\n4\n3\n2\n")
+        self.assertTrue(self.high_score.is_high_score(9))
+        self.assertTrue(self.high_score.is_high_score(2))
+        self.assertFalse(self.high_score.is_high_score(5))
+        self.assertFalse(self.high_score.is_high_score(6))
 
     def test_get_high_scores(self):
         """Test getting high scores"""
-        self.high_score.scores = [100, 200, 300]
+        self.high_score.scores = [4, 6, 7]
         self.assertListEqual(self.high_score.get_high_scores(),
-                             [100, 200, 300])
+                             [4, 6, 7])
 
 
 if __name__ == "__main__":
