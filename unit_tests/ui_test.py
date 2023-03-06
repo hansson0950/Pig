@@ -25,20 +25,12 @@ class UITest(unittest.TestCase):
             self.ui.display_welcome()
             self.assertEqual(fake_out.getvalue().strip(), "Welcome to Pig!")
 
-    def test_display_scores_one_player(self):
-        """Display scores in a one-player-game."""
-        player = Player("John")
-        with patch("sys.stdout", new=StringIO()) as fake_out:
-            self.ui.display_scores_one_player(player)
-            self.assertEqual(fake_out.getvalue().strip(),
-                             "Current Scores:\nJohn: 0")
-
-    def test_display_scores_two_players(self):
+    def test_display_scores(self):
         """Display scores in a two-player-game."""
         player1 = Player("John")
         player2 = Player("Rob")
         with patch("sys.stdout", new=StringIO()) as fake_out:
-            self.ui.display_scores_two_players(player1, player2)
+            self.ui.display_scores(player1, player2)
             self.assertEqual(fake_out.getvalue().strip(),
                              "Current Scores:\nJohn: 0\nRob: 0")
 
@@ -66,14 +58,14 @@ class UITest(unittest.TestCase):
         """Display turns."""
         player = Player("John")
         with patch("sys.stdout", new=StringIO()) as fake_out:
-            self.ui.display_turn(player)
+            self.ui.display_turn(player.name)
             self.assertEqual(fake_out.getvalue().strip(), "John's turn!")
 
     def test_display_turn_end(self):
         """Display turn end."""
         player = Player("John")
         with patch("sys.stdout", new=StringIO()) as fake_out:
-            self.ui.display_turn_end(player)
+            self.ui.display_turn_end(player.name)
             self.assertEqual(fake_out.getvalue().strip(),
                              "John's turn is over.")
 

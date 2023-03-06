@@ -24,6 +24,7 @@ class Player:
     def add_to_score(self, points):
         """Add points to score."""
         self.score = points
+        return self.score
 
     def add_to_turn(self, points):
         """Add points to current turn."""

@@ -8,15 +8,10 @@ class UI:
         """Welcome."""
         print("Welcome to Pig!")
 
-    def display_scores_one_player(self, player):
-        """Display score."""
-        print(f"Current Scores:\n{player.name}: {player.score}")
-
-    def display_scores_two_players(self, player1, player2):
+    def display_scores(self, player1, player2):
         """Display scores."""
-        print(f"Current Scores:\n\
-              {player1.name}: {player1.score}\n\
-              {player2.name}: {player2.score}")
+        # pylint: disable-msg=C0301
+        print(f"Current Scores:\n{player1.name}: {player1.score}\n{player2.name}: {player2.score}") # noqa
 
     def display_roll(self, roll):
         """Display the roll."""

@@ -15,7 +15,7 @@ class TestDice(unittest.TestCase):
 
     def setUp(self):
         """Create a Dice instance with 6 sides before each test."""
-        self.dice = Dice(sides=6)
+        self.dice = Dice()
 
     def test_roll(self):
         """Test that roll() returns values within the range of 1 and the \
