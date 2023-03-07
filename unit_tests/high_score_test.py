@@ -26,9 +26,11 @@ class TestHighScore(unittest.TestCase):
 
     def test_load_scores(self):
         """Test loading scores from a file."""
-        with patch('builtins.open', mock_open(read_data="Jon: 4\nAl: 6\nTy: 7\n")):
+        with patch('builtins.open',
+                   mock_open(read_data="Jon: 4\nAl: 6\nTy: 7\n")):
             self.high_score.load_scores('test_filename.txt')
-            self.assertEqual(self.high_score.scores, ["Jon: 4\n", "Al: 6\n", "Ty: 7\n"])
+            self.assertEqual(
+              self.high_score.scores, ["Jon: 4", "Al: 6", "Ty: 7"])
 
     def test_save_scores(self):
         """Test saving scores to a file."""

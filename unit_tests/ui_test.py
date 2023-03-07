@@ -31,8 +31,9 @@ class UITest(unittest.TestCase):
         player2 = Player("Rob")
         with patch("sys.stdout", new=StringIO()) as fake_out:
             self.ui.display_scores(player1, player2)
-            self.assertEqual(fake_out.getvalue().strip(),
-                             "Current Scores:\nJohn: 0\nRob: 0")
+            self.assertEqual(
+                fake_out.getvalue().strip(),
+                "---------------\n\nCurrent Scores:\nJohn: 0\nRob: 0")
 
     def test_display_roll(self):
         """Display the roll."""
@@ -50,9 +51,11 @@ class UITest(unittest.TestCase):
     def test_display_ask_roll_again(self):
         """Display "Roll again?"."""
         with patch("builtins.input", return_value="y"):
-            self.assertTrue(self.ui.ask_roll_again())
+            self.assertEqual(self.ui.ask_roll_again(), "y")
         with patch("builtins.input", return_value="n"):
-            self.assertFalse(self.ui.ask_roll_again())
+            self.assertEqual(self.ui.ask_roll_again(), "n")
+        with patch("builtins.input", return_value="cheat"):
+            self.assertEqual(self.ui.ask_roll_again(), "cheat")
 
     def test_display_turn(self):
         """Display turns."""
@@ -78,31 +81,25 @@ class UITest(unittest.TestCase):
     def test_display_high_scores(self):
         """Display high scores."""
         high_score = HighScore()
-        high_score.add_score("John", 5)
-        high_score.add_score("Rob", 8)
+        high_score.is_high_score(5, "John")
+        high_score.is_high_score(8, "Rob")
         with patch("sys.stdout", new=StringIO()) as fake_out:
-            self.ui.display_high_scores(high_score)
+            self.ui.display_high_scores(high_score.scores)
             self.assertEqual(fake_out.getvalue().strip(),
-                             "High Scores:\n1. John: 5 turns\n2. Rob: 8 turns")
+                             "High Scores:\nJohn: 5\nRob: 8")
 
     def test_display_rules(self):
         """Display rules."""
-        expected_output = "Rules:\n- Each turn, a player repeatedly rolls a \
-          die until either a 1 is rolled or the player decides to hold.\n- If \
-          the player rolls a 1, they score nothing and their turn ends.\n- \
-          If the player rolls any other number, it is added to their turn \
-          total and the player's turn continues.\n- If the player \
-          chooses to hold, their turn total is added to their score, \
-          and it becomes the next player's turn.\n- The first \
-          player to score 100 or more points wins."
+        # pylint: disable-msg=C0301
+        expected_output = "Rules:\n- Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to hold.\n- If the player rolls a 1, they score nothing and their turn ends.\n- If the player rolls any other number, it is added to their turn total and the player's turn continues.\n- If the player chooses to hold, their turn total is added to their score, and it becomes the next player's turn.\n- The first player to score 100 or more points wins."  # noqa
         with patch("sys.stdout", new=StringIO()) as fake_out:
             self.ui.display_rules()
             self.assertEqual(fake_out.getvalue().strip(), expected_output)
 
     def test_ask_player_name(self):
         """Display player name."""
-        with patch('sys.stdin', StringIO('John')):
-            self.assertEqual(self.ui.ask_player_name(), 'John')
+        with patch("sys.stdin", StringIO("John")):
+            self.assertEqual(self.ui.ask_player_name(1), "John")
 
 
 if __name__ == "__main__":

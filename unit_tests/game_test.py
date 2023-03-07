@@ -18,8 +18,8 @@ class TestGame(unittest.TestCase):
     def setUp(self):
         """Set up method that creates player objects and game object \
             for testing."""
-        self.player1 = Player("Alice")
-        self.player2 = ComputerPlayer("Bob")
+        self.player1 = Player("John")
+        self.player2 = ComputerPlayer("Rob")
         self.game = Game(self.player1, self.player2)
 
     def test_is_game_over(self):
