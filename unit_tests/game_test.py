@@ -19,8 +19,8 @@ class TestGame(unittest.TestCase):
         """Set up method that creates player objects and game object \
             for testing."""
         self.player1 = Player("John")
-        self.player2 = ComputerPlayer("Rob")
-        self.game = Game(self.player1, self.player2)
+        self.player2 = ComputerPlayer()
+        self.game = Game()
 
     def test_is_game_over(self):
         """Test method that checks if the game is over or not."""

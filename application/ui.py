@@ -24,7 +24,7 @@ class UI:
 
     def ask_roll_again(self):
         """Ask user if they want to roll again."""
-        return input("Roll again? [y/n]\n").lower()
+        return input("Roll? [y/n]\n").lower()
 
     def display_turn(self, name):
         """Display turn."""
