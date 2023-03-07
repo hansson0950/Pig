@@ -6,12 +6,13 @@ class UI:
 
     def display_welcome(self):
         """Welcome."""
-        print("Welcome to Pig!")
+        print("\nWelcome to Pig!")
 
     def display_scores(self, player1, player2):
         """Display scores."""
         # pylint: disable-msg=C0301
-        print(f"Current Scores:\n{player1.name}: {player1.score}\n{player2.name}: {player2.score}") # noqa
+        print("\n---------------\n")
+        print(f"Current Scores:\n{player1.name}: {player1.score}\n{player2.name}: {player2.score}\n") # noqa
 
     def display_roll(self, roll):
         """Display the roll."""
@@ -23,7 +24,7 @@ class UI:
 
     def ask_roll_again(self):
         """Ask user if they want to roll again."""
-        return input("Roll again? [y/n]").lower() == "y"
+        return input("Roll again? [y/n]\n").lower()
 
     def display_turn(self, name):
         """Display turn."""
@@ -39,24 +40,37 @@ class UI:
 
     def display_high_scores(self, highscores):
         """Display the high scores."""
-        print(f"High Scores:\n\
-              1. {highscores[0]}\n\
-              2. {highscores[1]}\n\
-              3. {highscores[2]}\n\
-              4. {highscores[3]}\n\
-              5. {highscores[4]}")
+        print("\nHigh Scores:")
+        for score in highscores:
+            print(score)
+        print()
 
     def display_rules(self):
         """Display the rules of the game."""
-        print("Rules:\n- Each turn, a player repeatedly rolls a \
-          die until either a 1 is rolled or the player decides to hold.\n- If \
-          the player rolls a 1, they score nothing and their turn ends.\n- \
-          If the player rolls any other number, it is added to their turn \
-          total and the player's turn continues.\n- If the player \
-          chooses to hold, their turn total is added to their score, \
-          and it becomes the next player's turn.\n- The first \
-          player to score 100 or more points wins.")
+        # pylint: disable-msg=C0301
+        print("Rules:\n- Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to hold.") # noqa
+        print("- If the player rolls a 1, they score nothing and their turn ends.")  # noqa
+        print("- If the player rolls any other number, it is added to their turn total and the player's turn continues.") # noqa
+        print("- If the player chooses to hold, their turn total is added to their score, and it becomes the next player's turn.")  # noqa
+        print("- The first player to score 100 or more points wins.\n")
 
-    def ask_player_name(self):
+    def ask_player_name(self, players):
         """Ask the name of the player."""
-        return input("Enter your name: ")
+        if players == 1:
+            return input("\nEnter your name: ")
+        else:
+            player1 = input("\nEnter the first player's name: ")
+            player2 = input("Enter the second player's name: ")
+            return [player1, player2]
+
+    def display_menu(self):
+        """."""
+        return input("1. Start Game\n2. Rules\n3. High Scores\n4. Exit\n")
+
+    def ask_player_amount(self):
+        """."""
+        return input("\n1. One Player\n2. Two Players\n")
+
+    def display_turn_score(self, points):
+        """."""
+        print(f"Total points this turn: {points}")

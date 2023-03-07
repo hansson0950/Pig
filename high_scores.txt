@@ -1,3 +1,5 @@
-Jon: 4 turns
-Al: 6 turns
-Ty: 7 turns
+EMil: 2
+EMIL: 2
+Jon: 4
+Al: 6
+Ty: 7

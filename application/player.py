@@ -23,12 +23,16 @@ class Player:
 
     def add_to_score(self, points):
         """Add points to score."""
-        self.score = points
+        self.score += points
         return self.score
 
     def add_to_turn(self, points):
         """Add points to current turn."""
         self.turn_score += points
+
+    def reset_turn_score(self):
+        """Reset turn score."""
+        self.turn_score = 0
 
     def end_turn(self):
         """End current turn."""

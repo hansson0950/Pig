@@ -26,7 +26,6 @@ class TestPlayer(unittest.TestCase):
         """Test the add_to_score method of Player class."""
         self.player.ui = Mock()
         initial_score = self.player.score
-        self.player.add_to_score(10)
         self.assertEqual(self.player.add_to_score(10), initial_score+10)
 
     def test_end_turn(self):
