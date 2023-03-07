@@ -63,32 +63,40 @@ class Game:
         player1 = Player(names[0])
         player2 = Player(names[1])
         while True:
-            if not self.play_turn(player1, player2):
+            if self.play_turn(player1, player2):
                 break
             # pylint: disable-msg=W1114
-            if not self.play_turn(player2, player1):
+            if self.play_turn(player2, player1):
                 break
 
     def play_turn(self, player1, player2):
         """."""
         while True:
-            player1.total_turns += 1
             self.ui.display_scores(player1, player2)
             self.ui.display_turn(player1.name)
-            roll = player1.roll_dice()
-            if roll == 1:
-                self.ui.display_bust()
-                player1.reset_turn_score()
-                player1.end_turn()
-                time.sleep(3)
+            self.ui.display_turn_score(player1.turn_score)
+            option = self.ui.ask_roll_again()
+
+            if option == "exit":
                 return True
 
-            player1.add_to_turn(roll)
-            self.ui.display_turn_score(player1.turn_score)
+            if option == "rename":
+                self.rename_player(player1)
 
-            option = ""
-            while option not in ("n", "y", "cheat"):
-                option = self.ui.ask_roll_again()
+            if option == "cheat":
+                player1.turn_score = 100
+
+            if option == "y":
+                player1.total_turns += 1
+                roll = player1.roll_dice()
+                if roll == 1:
+                    self.ui.display_bust()
+                    player1.reset_turn_score()
+                    player1.end_turn()
+                    time.sleep(3)
+                    return False
+
+                player1.add_to_turn(roll)
 
             if option == "n":
                 if player1.add_to_score(player1.turn_score) >= 100:
@@ -97,20 +105,16 @@ class Game:
                     self.high_score.is_high_score(
                         player1.total_turns, player1.name)
                     self.high_score.save_scores("high_scores.txt")
-                    return False
+                    return True
                 player1.reset_turn_score()
                 player1.end_turn()
                 time.sleep(3)
-                return True
+                return False
 
-            if option == "y":
-                continue
+        
+        
 
-            if option == "cheat":
-                player1.turn_score = 100
-
-            else:
-                print("Invalid input\n")
+            
 
     def play_turn_computer(self, player1, player2):
         """."""
@@ -139,6 +143,11 @@ class Game:
                 player1.end_turn()
                 time.sleep(3)
                 return True
+
+    def rename_player(self, player):
+        """."""
+        new_name = input("Enter a new name: ")
+        player.name = new_name
 
 
 if __name__ == "__main__":
