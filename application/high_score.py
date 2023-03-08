@@ -89,7 +89,7 @@ class HighScore:
         """
         self.scores.append(f"{name}: {new_score}")
         self.scores = sorted(self.scores, key=lambda x: int(x.split(": ")[-1]))
-        if len(self.scores > 5):
+        if len(self.scores) > 5:
             self.scores.pop()
 
     def get_high_scores(self):

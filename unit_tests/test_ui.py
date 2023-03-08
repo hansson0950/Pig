@@ -56,6 +56,10 @@ class UITest(unittest.TestCase):
             self.assertEqual(self.ui.ask_roll(), "n")
         with patch("builtins.input", return_value="cheat"):
             self.assertEqual(self.ui.ask_roll(), "cheat")
+        with patch("builtins.input", return_value="rename"):
+            self.assertEqual(self.ui.ask_roll(), "rename")
+        with patch("builtins.input", return_value="exit"):
+            self.assertEqual(self.ui.ask_roll(), "exit")
 
     def test_display_turn(self):
         """Test display turns."""
