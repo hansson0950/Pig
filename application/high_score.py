@@ -10,12 +10,12 @@ class HighScore:
 
     def load_scores(self, filename):
         """Load scores from txt file to local list."""
-        with open(filename, "r") as file:
+        with open(filename, "r", encoding="utf8") as file:
             self.scores = file.read().splitlines()
 
     def save_scores(self, filename):
         """Save scores from local list to txt file."""
-        with open(filename, "w") as file:
+        with open(filename, "w", encoding="utf8") as file:
             for string in self.scores:
                 file.write(string + "\n")
 
