@@ -8,16 +8,65 @@ from high_score import HighScore
 
 
 class Game:
-    """Game class."""
+    """Represents the game of Pig.
+
+    ### Description:
+    The game can be played by one or two players.
+    Uses the `UI`, `Player`, `ComputerPlayer`, and `HighScore` classes
+    to interact with the user, handle player moves and score tracking,
+    and display high scores.
+
+    ### Attributes:
+    - computer (ComputerPlayer): a computer player instance that plays
+      against the user.
+    - ui (UI): a user interface instance that handles input/output
+      interactions with the user.
+    - high_score (HighScore): a high score instance that keeps track of the
+      top scores.
+
+    ### Methods:
+    - __init__(): Initializes a new instance of the `Game` class, and
+      initializes its attributes.
+    - game_start(): Starts the game, displays the welcome message and menu,
+      and loops until the user quits or a player wins.
+    - game_one_player(): Starts a game against the computer player, loops
+      until a player wins, and handles each player's turns.
+    - game_two_players(): Starts a game between two human players, loops until
+      a player wins, and handles each player's turns.
+    - play_turn(player1, player2): Handles the turn of a given player,
+      displays the current scores, and loops until the player holds or busts.
+    - play_turn_computer(player1, player2): Handles the turn of the computer
+      player, displays the current scores, and loops until the player holds
+      or busts.
+    - rename_player(player): Prompts the user to rename themselves.
+    """
 
     def __init__(self):
-        """Initialize game object."""
+        """Initialize the game.
+
+        ### Description:
+            Initializes a new instance of the `Game` class,
+            and initializes its attributes.
+
+        ### Attributes:
+        - computer (ComputerPlayer): a computer player instance that plays
+          against the user.
+        - ui (UI): a user interface instance that handles input/output
+          interactions with the user.
+        - high_score (HighScore): a high score instance that keeps track
+          of the top scores.
+        """
         self.computer = ComputerPlayer()
         self.ui = UI()  # pylint: disable-msg=C0103
         self.high_score = HighScore()
 
     def game_start(self):
-        """Start game sequence."""
+        """Start the game.
+
+        ### Description:
+            Starts the game and displays the welcome message and menu,
+            and loops until the user quits or a player wins.
+        """
         self.high_score.create_file()
         self.high_score.load_scores("high_scores.txt")
         self.ui.display_welcome()
@@ -47,7 +96,12 @@ class Game:
                 print("Invalid input\n")
 
     def game_one_player(self):
-        """One player game logic."""
+        """Start a one-player game.
+
+        ### Description:
+        Starts a game against the computer player,
+        loops until a player wins, and handles each player's turns.
+        """
         name = self.ui.ask_player_name(1)
         player1 = Player(name)
         player2 = self.computer
@@ -64,7 +118,13 @@ class Game:
                 break
 
     def game_two_players(self):
-        """Two player game logic."""
+        """Start a two-player game.
+
+        ### Description:
+        This method is responsible for managing the two-player game logic.
+        It prompts players to enter their names, displays scores, and turns,
+        and calls the play_turn method to handle the gameplay.
+        """
         names = self.ui.ask_player_name(2)
         player1 = Player(names[0])
         player2 = Player(names[1])
@@ -82,7 +142,22 @@ class Game:
                 break
 
     def play_turn(self, player1, player2):
-        """Play one turn of the game."""
+        """Play turn.
+
+        ### Description:
+            This method plays one turn of the game for a given player.
+            It prompts the player to choose whether to roll or hold,
+            displays the turn score and updates the player's total score
+            accordingly. It also handles player-specific options,
+            such as renaming and cheating.
+
+        ### Args:
+            player1 (Player): the player whose turn it is
+            player2 (Player): the other player in the game
+
+        ### Returns:
+            bool: True if the game has ended, False otherwise
+        """
         while True:
             option = self.ui.ask_roll_again()
 
@@ -125,7 +200,21 @@ class Game:
                 return False
 
     def play_turn_computer(self, player1, player2):
-        """Play one turn of the game for the computer."""
+        """Play computer's turn.
+
+        ### Description:
+            This method plays one turn of the game for the computer player.
+            It calls the choose_move method of the Computer class to determine
+            whether to roll or hold. It then displays the turn score and
+            updates the player's total score accordingly.
+
+        ### Args:
+            player1 (Player): the computer player
+            player2 (Player): the human player
+
+        ### Returns:
+            bool: True if the game has ended, False otherwise
+        """
         while True:
             move = self.computer.choose_move()
             if move == "roll":
@@ -159,7 +248,16 @@ class Game:
                 return False
 
     def rename_player(self, player):
-        """Rename player."""
+        """Rename a player.
+
+        ### Description:
+            This method allows the player to rename themselves.
+            It prompts the player to enter a new name and updates
+            the player's name.
+
+        ### Args:
+            player (Player): the player to be renamed
+        """
         new_name = input("Enter a new name: ")
         player.name = new_name
 
