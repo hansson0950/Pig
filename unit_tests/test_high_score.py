@@ -36,15 +36,17 @@ class TestHighScore(unittest.TestCase):
         """Test saving scores to a file."""
         self.high_score.scores = ["Jon: 4", "Al: 6", "Ty: 7"]
 
+        # pylint: disable-msg=C0103
         with patch("builtins.open", mock_open()) as m:
             self.high_score.save_scores("test_filename.txt")
 
-            m.assert_called_once_with("test_filename.txt", "w", encoding="utf8")
+            m.assert_called_once_with(
+                "test_filename.txt", "w", encoding="utf8")
 
             handle = m()
             handle.write.assert_has_calls([
-                call("Jon: 4\n"), 
-                call("Al: 6\n"), 
+                call("Jon: 4\n"),
+                call("Al: 6\n"),
                 call("Ty: 7\n")
             ])
 
