@@ -1,4 +1,5 @@
 """High score class."""
+from pathlib import Path
 
 
 class HighScore:
@@ -8,14 +9,19 @@ class HighScore:
         """Initialize list of high scores."""
         self.scores = []
 
+    def create_file(self):
+        """Create the high_score.txt file if it doesn't already exist."""
+        file = Path("high_scores.txt")
+        file.touch(exist_ok=True)
+
     def load_scores(self, filename):
         """Load scores from txt file to local list."""
-        with open(filename, "r") as file:
+        with open(filename, "r", encoding="utf8") as file:
             self.scores = file.read().splitlines()
 
     def save_scores(self, filename):
         """Save scores from local list to txt file."""
-        with open(filename, "w") as file:
+        with open(filename, "w", encoding="utf8") as file:
             for string in self.scores:
                 file.write(string + "\n")
 

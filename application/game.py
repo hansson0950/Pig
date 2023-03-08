@@ -17,7 +17,8 @@ class Game:
         self.high_score = HighScore()
 
     def game_start(self):
-        """Start game sequence"""
+        """Start game sequence."""
+        self.high_score.create_file()
         self.high_score.load_scores("high_scores.txt")
         self.ui.display_welcome()
         while True:

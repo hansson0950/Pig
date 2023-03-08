@@ -58,10 +58,10 @@ class UI:
         """Ask the name of the player."""
         if players == 1:
             return input("\nEnter your name: ")
-        else:
-            player1 = input("\nEnter the first player's name: ")
-            player2 = input("Enter the second player's name: ")
-            return [player1, player2]
+
+        player1 = input("\nEnter the first player's name: ")
+        player2 = input("Enter the second player's name: ")
+        return [player1, player2]
 
     def display_menu(self):
         """Display game menu with options and return user input."""
