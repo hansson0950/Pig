@@ -43,8 +43,8 @@ class TestHighScore(unittest.TestCase):
 
             handle = m()
             handle.write.assert_has_calls([
-                call("Jon: 4\n"), 
-                call("Al: 6\n"), 
+                call("Jon: 4\n"),
+                call("Al: 6\n"),
                 call("Ty: 7\n")
             ])
 
