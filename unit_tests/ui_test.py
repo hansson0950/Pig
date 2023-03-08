@@ -98,8 +98,27 @@ class UITest(unittest.TestCase):
 
     def test_ask_player_name(self):
         """Display player name."""
-        with patch("sys.stdin", StringIO("John")):
+        with patch("builtins.input", return_value="John"):
             self.assertEqual(self.ui.ask_player_name(1), "John")
+
+    def test_display_menu(self):
+        """Display menu options."""
+        with patch("builtins.input", return_value="2"):
+            self.assertEqual(self.ui.display_menu(), "2")
+
+    def test_ask_player_amount(self):
+        """Display player amount."""
+        with patch("builtins.input", return_value="1"):
+            self.assertEqual(self.ui.ask_roll_again(), "1")
+        with patch("builtins.input", return_value="2"):
+            self.assertEqual(self.ui.ask_roll_again(), "2")
+
+    def test_display_turn_score(self):
+        """Display turn score."""
+        with patch("sys.stdout", new=StringIO()) as fake_out:
+            self.ui.display_turn_score(3)
+            self.assertEqual(fake_out.getvalue().strip(),
+                             "Total points this turn: 3")
 
 
 if __name__ == "__main__":

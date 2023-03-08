@@ -64,13 +64,13 @@ class UI:
             return [player1, player2]
 
     def display_menu(self):
-        """."""
+        """Display game menu with options and return user input."""
         return input("1. Start Game\n2. Rules\n3. High Scores\n4. Exit\n")
 
     def ask_player_amount(self):
-        """."""
+        """Ask how many players should play a game."""
         return input("\n1. One Player\n2. Two Players\n")
 
     def display_turn_score(self, points):
-        """."""
+        """Display the score for the current turn."""
         print(f"Total points this turn: {points}")

@@ -14,13 +14,11 @@ class TestDice(unittest.TestCase):
     """A class to test the Dice class."""
 
     def setUp(self):
-        """Create a Dice instance with 6 sides before each test."""
+        """Create a Dice to be used for the tests."""
         self.dice = Dice()
 
     def test_roll(self):
-        """Test that roll() returns values within the range of 1 and the \
-            number of sides on the dice, and that the randint function is \
-                called with the correct arguments."""
+        """Test that roll() returns a value from 1-6."""
         with patch('random.randint') as mock_randint:
             mock_randint.return_value = 4
             result = self.dice.roll()
