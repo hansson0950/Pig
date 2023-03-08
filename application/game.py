@@ -45,8 +45,8 @@ class Game:
         """Initialize the game.
 
         ### Description:
-            Initializes a new instance of the `Game` class,
-            and initializes its attributes.
+        Initializes a new instance of the `Game` class,
+        and initializes its attributes.
 
         ### Attributes:
         - computer (ComputerPlayer): a computer player instance that plays
@@ -64,8 +64,8 @@ class Game:
         """Start the game.
 
         ### Description:
-            Starts the game and displays the welcome message and menu,
-            and loops until the user quits or a player wins.
+        Starts the game and displays the welcome message and menu,
+        and loops until the user quits or a player wins.
         """
         self.high_score.create_file()
         self.high_score.load_scores("high_scores.txt")
@@ -145,18 +145,18 @@ class Game:
         """Play turn.
 
         ### Description:
-            This method plays one turn of the game for a given player.
-            It prompts the player to choose whether to roll or hold,
-            displays the turn score and updates the player's total score
-            accordingly. It also handles player-specific options,
-            such as renaming and cheating.
+        This method plays one turn of the game for a given player.
+        It prompts the player to choose whether to roll or hold,
+        displays the turn score and updates the player's total score
+        accordingly. It also handles player-specific options,
+        such as renaming and cheating.
 
         ### Args:
-            player1 (Player): the player whose turn it is
-            player2 (Player): the other player in the game
+        - player1 (Player): the player whose turn it is
+        - player2 (Player): the other player in the game
 
         ### Returns:
-            bool: True if the game has ended, False otherwise
+        - bool: True if the game has ended, False otherwise
         """
         while True:
             option = self.ui.ask_roll_again()
@@ -203,17 +203,17 @@ class Game:
         """Play computer's turn.
 
         ### Description:
-            This method plays one turn of the game for the computer player.
-            It calls the choose_move method of the Computer class to determine
-            whether to roll or hold. It then displays the turn score and
-            updates the player's total score accordingly.
+        This method plays one turn of the game for the computer player.
+        It calls the choose_move method of the Computer class to determine
+        whether to roll or hold. It then displays the turn score and
+        updates the player's total score accordingly.
 
         ### Args:
-            player1 (Player): the computer player
-            player2 (Player): the human player
+        - player1 (Player): the computer player
+        - player2 (Player): the human player
 
         ### Returns:
-            bool: True if the game has ended, False otherwise
+        - bool: True if the game has ended, False otherwise
         """
         while True:
             move = self.computer.choose_move()
@@ -251,12 +251,12 @@ class Game:
         """Rename a player.
 
         ### Description:
-            This method allows the player to rename themselves.
-            It prompts the player to enter a new name and updates
-            the player's name.
+        This method allows the player to rename themselves.
+        It prompts the player to enter a new name and updates
+        the player's name.
 
         ### Args:
-            player (Player): the player to be renamed
+        - player (Player): the player to be renamed
         """
         new_name = input("Enter a new name: ")
         player.name = new_name
