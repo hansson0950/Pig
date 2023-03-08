@@ -117,7 +117,7 @@ class UI:
         Displays 'Game over!' when someone successfully reaches 100 points
         and chooses to hold.
         """
-        print("Game over!")
+        print("Game over!\n")
 
     def display_high_scores(self, highscores):
         """Display high scores.
