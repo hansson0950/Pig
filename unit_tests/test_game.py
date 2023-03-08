@@ -1,6 +1,7 @@
 """This class tests the Game class of the application."""
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock, call, Mock
+from io import StringIO
 
 import sys
 sys.path.append("./application")
@@ -21,76 +22,74 @@ class TestGame(unittest.TestCase):
         self.player1 = Player("John")
         self.player2 = ComputerPlayer()
         self.game = Game()
+        self.ui = UI()
 
-    def test_is_game_over(self):
-        """Test method that checks if the game is over or not."""
-        self.assertFalse(self.game.is_game_over())
-        self.player1.score = 100
-        self.assertTrue(self.game.is_game_over())
+    @patch.object(Game, "game_two_players", return_value=None)
+    @patch.object(Game, "game_one_player", return_value=None)
+    @patch.object(UI, "ask_player_amount", side_effect=["1", "2"])
+    @patch.object(UI, "display_menu", side_effect=["2", "3", "1", "4"])
+    def test_game_start(self, mock_menu_options, mock_player_amount, mock_game_one_player, mock_game_two_players):
+        """."""
+        with self.assertRaises(SystemExit):
+            self.game.game_start()
 
-    @patch.object(UI, "display_welcome")
-    @patch.object(UI, "display_scores")
-    @patch.object(UI, "display_game_over")
-    def test_start(self, mock_display_game_over,
-                   mock_display_scores, mock_display_welcome):
-        """Test method that checks the start of the game by verifying the \
-            display of welcome message, the scores, \
-                and the game over message."""
-        self.game.start()
-        mock_display_welcome.assert_called_once()
-        self.assertTrue(mock_display_scores.call_count > 0)
-        mock_display_game_over.assert_called_once()
+    @patch.object(Game, "play_turn_computer", side_effect=[True, False])
+    @patch.object(Game, "play_turn", side_effect=[True, False, False])
+    @patch.object(UI, "ask_player_name", return_value="Sandra")
+    def test_game_one_player(self, mock_player_name, mock_player_turn, mock_computer_turn):
+        """."""
+        self.game.game_one_player()
+        self.game.game_one_player()
 
-    @patch.object(Player, "roll_dice", return_value=1)
-    @patch.object(UI, "display_turn")
-    @patch.object(UI, "display_scores")
-    @patch.object(UI, "display_roll")
-    @patch.object(UI, "display_bust")
-    def test_play_turn_bust(self, mock_display_bust,
-                            mock_display_roll, mock_display_scores,
-                            mock_display_turn, mock_roll_dice):
-        """Test method that checks the play of turn when the player busts."""
-        self.game.play_turn()
-        mock_display_turn.assert_called_once_with(self.player1)
-        mock_roll_dice.assert_called_once()
-        mock_display_roll.assert_called_once_with(1)
-        mock_display_bust.assert_called_once()
-        mock_display_scores.assert_called_once_with(self.player1, self.player2)
-        self.assertEqual(self.game.current_player, self.player2)
+    @patch.object(Game, "play_turn", side_effect=[True, False, True])
+    @patch.object(UI, "ask_player_name", return_value=["Sandra", "Felix"])
+    def test_game_two_players(self, mock_player_name, mock_player_turn):
+        """."""
+        self.game.game_two_players()
 
+    
+    @patch("builtins.input", side_effect=["n", "y", "n", "exit", "rename", "Bob", "n", "y", "cheat", "n"])
     @patch.object(Player, "roll_dice", return_value=2)
-    @patch.object(UI, "ask_roll_again", return_value=False)
-    @patch.object(UI, "display_turn_end")
-    @patch.object(UI, "display_scores")
-    @patch.object(UI, "display_roll")
-    def test_play_turn_no_roll_again(self, mock_display_roll,
-                                     mock_display_scores,
-                                     mock_display_turn_end,
-                                     mock_ask_roll_again,
-                                     mock_roll_dice):
-        """Test method that checks the play of turn when the player \
-            doesn't roll again."""
-        self.game.play_turn()
-        mock_roll_dice.assert_called_once()
-        mock_display_roll.assert_called_once_with(2)
-        mock_ask_roll_again.assert_called_once()
-        mock_display_scores.assert_called_once_with(self.player1, self.player2)
-        mock_display_turn_end.assert_called_once_with(self.player1)
-        self.assertEqual(self.game.current_player, self.player2)
+    def test_play_turn(self, mock_dice_roll, mock_input):
+        """."""
+        # Don't roll again
+        self.assertFalse(self.game.play_turn(self.player1, self.player2))
 
-    @patch.object(Player, "roll_dice", return_value=3)
-    @patch.object(UI, "ask_roll_again", return_value=True)
-    @patch.object(UI, "display_scores")
-    @patch.object(UI, "display_roll")
-    def test_play_turn_roll_again(self, mock_display_roll, mock_display_scores,
-                                  mock_ask_roll_again, mock_roll_dice):
-        """Test method that checks the play of turn when the player \
-            chooses to roll again."""
-        self.game.play_turn()
-        mock_roll_dice.assert_called_once()
-        mock_display_roll.assert_called_once_with(3)
-        mock_ask_roll_again.assert_called_once()
-        mock_display_scores.assert_called_once_with(self.player1, self.player2)
+        # Roll once
+        self.assertFalse(self.game.play_turn(self.player1, self.player2))
+
+        # Exit game
+        self.assertTrue(self.game.play_turn(self.player1, self.player2))
+
+        # Rename to Bob
+        self.assertFalse(self.game.play_turn(self.player1, self.player2))
+
+        # Roll and bust
+        mock_dice_roll.return_value = 1
+        print(self.player1.roll_dice())
+        self.assertFalse(self.game.play_turn(self.player1, self.player2))
+
+        # Cheat and win
+        self.assertTrue(self.game.play_turn(self.player1, self.player2))
+
+        
+
+    @patch.object(ComputerPlayer, "choose_move", side_effect=["hold", "roll", "hold", "roll"])
+    @patch.object(Player, "roll_dice", return_value=100)
+    def test_play_turn_computer(self, mock_dice_roll, mock_computer_moves):
+        """."""
+        self.assertFalse(self.game.play_turn_computer(self.player2, self.player1))
+
+        self.assertTrue(self.game.play_turn_computer(self.player2, self.player1))
+
+        mock_dice_roll.return_value = 1
+        self.assertFalse(self.game.play_turn_computer(self.player2, self.player1))
+
+    def test_rename_player(self):
+        """."""
+        with patch("builtins.input", return_value="Alex"):
+            self.game.rename_player(self.player1)
+            self.assertEqual(self.player1.name, "Alex")
 
 
 if __name__ == "__main__":
