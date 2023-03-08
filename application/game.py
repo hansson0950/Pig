@@ -11,13 +11,13 @@ class Game:
     """Game class."""
 
     def __init__(self):
-        """."""
+        """Initialize the game class."""
         self.computer = ComputerPlayer()
         self.ui = UI()  # pylint: disable-msg=C0103
         self.high_score = HighScore()
 
     def game_start(self):
-        """."""
+        """Start the program."""
         self.high_score.load_scores("high_scores.txt")
         self.ui.display_welcome()
         while True:
@@ -46,7 +46,7 @@ class Game:
                 print("Invalid input")
 
     def game_one_player(self):
-        """."""
+        """Start a game of one player."""
         name = self.ui.ask_player_name(1)
         player1 = Player(name)
         player2 = self.computer
@@ -58,7 +58,7 @@ class Game:
                 break
 
     def game_two_players(self):
-        """."""
+        """Start a game of two players."""
         names = self.ui.ask_player_name(2)
         player1 = Player(names[0])
         player2 = Player(names[1])
@@ -70,7 +70,7 @@ class Game:
                 break
 
     def play_turn(self, player1, player2):
-        """."""
+        """Play one turn."""
         while True:
             self.ui.display_scores(player1, player2)
             self.ui.display_turn(player1.name)
@@ -111,13 +111,8 @@ class Game:
                 time.sleep(3)
                 return False
 
-        
-        
-
-            
-
     def play_turn_computer(self, player1, player2):
-        """."""
+        """Play computers' turn (automated)."""
         while True:
             player1.total_turns += 1
             time.sleep(3)
@@ -145,7 +140,7 @@ class Game:
                 return True
 
     def rename_player(self, player):
-        """."""
+        """Rename current turn's player."""
         new_name = input("Enter a new name: ")
         player.name = new_name
 
