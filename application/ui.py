@@ -17,7 +17,7 @@ class UI:
       players.
     - display_roll(self, roll): Displays the result of a roll.
     - display_bust(self): Displays a message when the user busts.
-    - ask_roll_again(self): Asks the user if they want to roll again.
+    - ask_roll(self): Asks the user if they want to roll again.
     - display_turn(self, name): Displays the name of the player whose turn it
       is.
     - display_turn_end(self, name): Displays a message when a player's turn is
@@ -76,7 +76,7 @@ class UI:
         """
         print("Bust! Your turn is over.")
 
-    def ask_roll_again(self):
+    def ask_roll(self):
         """Ask user if they want to roll.
 
         ### Description:

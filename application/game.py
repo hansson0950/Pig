@@ -159,7 +159,7 @@ class Game:
         - bool: True if the game has ended, False otherwise
         """
         while True:
-            option = self.ui.ask_roll_again()
+            option = self.ui.ask_roll()
 
             if option == "exit":
                 return True

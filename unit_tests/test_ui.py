@@ -48,14 +48,14 @@ class UITest(unittest.TestCase):
             self.assertEqual(fake_out.getvalue().strip(),
                              "Bust! Your turn is over.")
 
-    def test_display_ask_roll_again(self):
+    def test_display_ask_roll(self):
         """Test display "Roll?"."""
         with patch("builtins.input", return_value="y"):
-            self.assertEqual(self.ui.ask_roll_again(), "y")
+            self.assertEqual(self.ui.ask_roll(), "y")
         with patch("builtins.input", return_value="n"):
-            self.assertEqual(self.ui.ask_roll_again(), "n")
+            self.assertEqual(self.ui.ask_roll(), "n")
         with patch("builtins.input", return_value="cheat"):
-            self.assertEqual(self.ui.ask_roll_again(), "cheat")
+            self.assertEqual(self.ui.ask_roll(), "cheat")
 
     def test_display_turn(self):
         """Test display turns."""
@@ -109,9 +109,9 @@ class UITest(unittest.TestCase):
     def test_ask_player_amount(self):
         """Test ask player amount."""
         with patch("builtins.input", return_value="1"):
-            self.assertEqual(self.ui.ask_roll_again(), "1")
+            self.assertEqual(self.ui.ask_roll(), "1")
         with patch("builtins.input", return_value="2"):
-            self.assertEqual(self.ui.ask_roll_again(), "2")
+            self.assertEqual(self.ui.ask_roll(), "2")
 
     def test_display_turn_score(self):
         """Test display turn score."""
