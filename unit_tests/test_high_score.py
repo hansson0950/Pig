@@ -39,7 +39,7 @@ class TestHighScore(unittest.TestCase):
         with patch("builtins.open", mock_open()) as m:
             self.high_score.save_scores("test_filename.txt")
 
-            m.assert_called_once_with("test_filename.txt", "w")
+            m.assert_called_once_with("test_filename.txt", "w", encoding="utf8")
 
             handle = m()
             handle.write.assert_has_calls([
