@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>ui API documentation</title>
+<meta name="description" content="UI class." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ui</code></h1>
+</header>
+<section id="section-intro">
+<p>UI class.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;UI class.&#34;&#34;&#34;
+
+
+class UI:
+    &#34;&#34;&#34;A class made for the user interface.
+
+    ### Description:
+    A class for managing the user interface of the Pig game.
+    It handles most, if not all, print operations.
+
+    ### Attributes:
+    - None
+
+    ### Methods:
+    - display_welcome(self): Displays a welcome message.
+    - display_scores(self, player1, player2): Displays the scores of the
+      players.
+    - display_roll(self, roll): Displays the result of a roll.
+    - display_bust(self): Displays a message when the user busts.
+    - ask_roll_again(self): Asks the user if they want to roll again.
+    - display_turn(self, name): Displays the name of the player whose turn it
+      is.
+    - display_turn_end(self, name): Displays a message when a player&#39;s turn is
+      over.
+    - display_game_over(self): Displays a message when the game is over.
+    - display_high_scores(self, highscores): Displays the high scores.
+    - display_rules(self): Displays the rules of the game.
+    - ask_player_name(self, players): Asks the name(s) of the player(s).
+    - display_menu(self): Displays the game menu with options and returns user
+      input.
+    - ask_player_amount(self): Asks the number of players for a game.
+    - display_turn_score(self, points): Displays the score for the current
+      turn.
+    &#34;&#34;&#34;
+
+    def display_welcome(self):
+        &#34;&#34;&#34;Welcome.
+
+        ### Description:
+        Prints a simple welcome message when the game starts.
+        &#34;&#34;&#34;
+        print(&#34;\nWelcome to Pig!&#34;)
+
+    def display_scores(self, player1, player2):
+        &#34;&#34;&#34;Display scores.
+
+        ### Description:
+        Displays the current scores of the game between the two players,
+        or player and computer. This is printed every time a player
+        is about to roll.
+
+        ### Args:
+        - player1 (obj): The object of the first player.
+        - player2 (obj): The object of the second player.
+        &#34;&#34;&#34;
+        # pylint: disable-msg=C0301
+        print(&#34;\n---------------\n&#34;)
+        print(f&#34;Current Scores:\n{player1.name}: {player1.score}\n{player2.name}: {player2.score}\n&#34;) # noqa
+
+    def display_roll(self, roll):
+        &#34;&#34;&#34;Display the roll.
+
+        ### Description:
+        Displays the result of a roll.
+
+        ### Args:
+        - roll (int): The result of the roll
+        &#34;&#34;&#34;
+        print(f&#34;Roll: {roll}&#34;)
+
+    def display_bust(self):
+        &#34;&#34;&#34;Display when user busts.
+
+        ### Description:
+        This is printed when the player rolls a one.
+        &#34;&#34;&#34;
+        print(&#34;Bust! Your turn is over.&#34;)
+
+    def ask_roll_again(self):
+        &#34;&#34;&#34;Ask user if they want to roll.
+
+        ### Description:
+        Asks the user if they want to roll, accepts an input.
+
+        ### Returns:
+        - string: Whatever the user inputted, will print &#39;Invalid Input&#39; if
+          they input something other than &#39;y&#39;, &#39;n&#39;, &#39;cheat&#39;, &#39;rename&#39; or &#39;exit&#39;
+        &#34;&#34;&#34;
+        return input(&#34;Roll? [y/n]\n&#34;).lower()
+
+    def display_turn(self, name):
+        &#34;&#34;&#34;Display turn.
+
+        ### Description:
+        Displays whose turn it is.
+
+        ### Args:
+        - name (string): The name of the player whose turn it is.
+        &#34;&#34;&#34;
+        print(f&#34;{name}&#39;s turn!&#34;)
+
+    def display_turn_end(self, name):
+        &#34;&#34;&#34;Display turn end.
+
+        ### Description:
+        Displays the name of the player whose turn is over.
+
+        ### Args:
+        - name (str): The name of the player whose turn is over.
+        &#34;&#34;&#34;
+        print(f&#34;{name}&#39;s turn is over.&#34;)
+
+    def display_game_over(self):
+        &#34;&#34;&#34;Display game over.
+
+        ### Description:
+        Displays &#39;Game over!&#39; when someone successfully reaches 100 points
+        and chooses to hold.
+        &#34;&#34;&#34;
+        print(&#34;Game over!&#34;)
+
+    def display_high_scores(self, highscores):
+        &#34;&#34;&#34;Display high scores.
+
+        ## Description:
+        Displays the local high scores.
+
+        ### Args:
+        - highscores (list): The list of the high scores, containing strings
+          of the names and number of turns to reach 100 points.
+        &#34;&#34;&#34;
+        print(&#34;\nHigh Scores:&#34;)
+        for score in highscores:
+            print(score)
+        print()
+
+    def display_rules(self):
+        &#34;&#34;&#34;Display rules.
+
+        ### Description:
+        Displays the rules of the game.
+        &#34;&#34;&#34;
+        # pylint: disable-msg=C0301
+        print(&#34;Rules:\n- Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to hold.&#34;) # noqa
+        print(&#34;- If the player rolls a 1, they score nothing and their turn ends.&#34;)  # noqa
+        print(&#34;- If the player rolls any other number, it is added to their turn total and the player&#39;s turn continues.&#34;) # noqa
+        print(&#34;- If the player chooses to hold, their turn total is added to their score, and it becomes the next player&#39;s turn.&#34;)  # noqa
+        print(&#34;- The first player to score 100 or more points wins.\n&#34;)
+
+    def ask_player_name(self, players):
+        &#34;&#34;&#34;Ask player name.
+
+        ### Description:
+        Asks the player to enter their name before the game starts.
+
+        ### Args:
+        - players (int): The number of players.
+
+        ### Returns:
+        - str: The name of the player in a single player game
+        - list: The names of both players in a two player game.
+        &#34;&#34;&#34;
+        if players == 1:
+            return input(&#34;\nEnter your name: &#34;)
+
+        player1 = input(&#34;\nEnter the first player&#39;s name: &#34;)
+        player2 = input(&#34;Enter the second player&#39;s name: &#34;)
+        return [player1, player2]
+
+    def display_menu(self):
+        &#34;&#34;&#34;Display menu.
+
+        ### Description:
+        Displays the menu with four different options and returns the input.
+
+        ### Returns:
+        - int: The option the user chose.
+        &#34;&#34;&#34;
+        return input(&#34;1. Start Game\n2. Rules\n3. High Scores\n4. Exit\n&#34;)
+
+    def ask_player_amount(self):
+        &#34;&#34;&#34;Ask player amount.
+
+        ### Description:
+        Ask how many players will play.
+
+        ### Returns:
+        - int: One or two, depending on how many will play.
+        &#34;&#34;&#34;
+        return input(&#34;\n1. One Player\n2. Two Players\n&#34;)
+
+    def display_turn_score(self, points):
+        &#34;&#34;&#34;Display turn score.
+
+        ### Description:
+        Displays the score for the current turn.
+        &#34;&#34;&#34;
+        print(f&#34;Total points this turn: {points}&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ui.UI"><code class="flex name class">
+<span>class <span class="ident">UI</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class made for the user interface.</p>
+<h3 id="description">Description:</h3>
+<p>A class for managing the user interface of the Pig game.
+It handles most, if not all, print operations.</p>
+<h3 id="attributes">Attributes:</h3>
+<ul>
+<li>None</li>
+</ul>
+<h3 id="methods">Methods:</h3>
+<ul>
+<li>display_welcome(self): Displays a welcome message.</li>
+<li>display_scores(self, player1, player2): Displays the scores of the
+players.</li>
+<li>display_roll(self, roll): Displays the result of a roll.</li>
+<li>display_bust(self): Displays a message when the user busts.</li>
+<li>ask_roll_again(self): Asks the user if they want to roll again.</li>
+<li>display_turn(self, name): Displays the name of the player whose turn it
+is.</li>
+<li>display_turn_end(self, name): Displays a message when a player's turn is
+over.</li>
+<li>display_game_over(self): Displays a message when the game is over.</li>
+<li>display_high_scores(self, highscores): Displays the high scores.</li>
+<li>display_rules(self): Displays the rules of the game.</li>
+<li>ask_player_name(self, players): Asks the name(s) of the player(s).</li>
+<li>display_menu(self): Displays the game menu with options and returns user
+input.</li>
+<li>ask_player_amount(self): Asks the number of players for a game.</li>
+<li>display_turn_score(self, points): Displays the score for the current
+turn.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UI:
+    &#34;&#34;&#34;A class made for the user interface.
+
+    ### Description:
+    A class for managing the user interface of the Pig game.
+    It handles most, if not all, print operations.
+
+    ### Attributes:
+    - None
+
+    ### Methods:
+    - display_welcome(self): Displays a welcome message.
+    - display_scores(self, player1, player2): Displays the scores of the
+      players.
+    - display_roll(self, roll): Displays the result of a roll.
+    - display_bust(self): Displays a message when the user busts.
+    - ask_roll_again(self): Asks the user if they want to roll again.
+    - display_turn(self, name): Displays the name of the player whose turn it
+      is.
+    - display_turn_end(self, name): Displays a message when a player&#39;s turn is
+      over.
+    - display_game_over(self): Displays a message when the game is over.
+    - display_high_scores(self, highscores): Displays the high scores.
+    - display_rules(self): Displays the rules of the game.
+    - ask_player_name(self, players): Asks the name(s) of the player(s).
+    - display_menu(self): Displays the game menu with options and returns user
+      input.
+    - ask_player_amount(self): Asks the number of players for a game.
+    - display_turn_score(self, points): Displays the score for the current
+      turn.
+    &#34;&#34;&#34;
+
+    def display_welcome(self):
+        &#34;&#34;&#34;Welcome.
+
+        ### Description:
+        Prints a simple welcome message when the game starts.
+        &#34;&#34;&#34;
+        print(&#34;\nWelcome to Pig!&#34;)
+
+    def display_scores(self, player1, player2):
+        &#34;&#34;&#34;Display scores.
+
+        ### Description:
+        Displays the current scores of the game between the two players,
+        or player and computer. This is printed every time a player
+        is about to roll.
+
+        ### Args:
+        - player1 (obj): The object of the first player.
+        - player2 (obj): The object of the second player.
+        &#34;&#34;&#34;
+        # pylint: disable-msg=C0301
+        print(&#34;\n---------------\n&#34;)
+        print(f&#34;Current Scores:\n{player1.name}: {player1.score}\n{player2.name}: {player2.score}\n&#34;) # noqa
+
+    def display_roll(self, roll):
+        &#34;&#34;&#34;Display the roll.
+
+        ### Description:
+        Displays the result of a roll.
+
+        ### Args:
+        - roll (int): The result of the roll
+        &#34;&#34;&#34;
+        print(f&#34;Roll: {roll}&#34;)
+
+    def display_bust(self):
+        &#34;&#34;&#34;Display when user busts.
+
+        ### Description:
+        This is printed when the player rolls a one.
+        &#34;&#34;&#34;
+        print(&#34;Bust! Your turn is over.&#34;)
+
+    def ask_roll_again(self):
+        &#34;&#34;&#34;Ask user if they want to roll.
+
+        ### Description:
+        Asks the user if they want to roll, accepts an input.
+
+        ### Returns:
+        - string: Whatever the user inputted, will print &#39;Invalid Input&#39; if
+          they input something other than &#39;y&#39;, &#39;n&#39;, &#39;cheat&#39;, &#39;rename&#39; or &#39;exit&#39;
+        &#34;&#34;&#34;
+        return input(&#34;Roll? [y/n]\n&#34;).lower()
+
+    def display_turn(self, name):
+        &#34;&#34;&#34;Display turn.
+
+        ### Description:
+        Displays whose turn it is.
+
+        ### Args:
+        - name (string): The name of the player whose turn it is.
+        &#34;&#34;&#34;
+        print(f&#34;{name}&#39;s turn!&#34;)
+
+    def display_turn_end(self, name):
+        &#34;&#34;&#34;Display turn end.
+
+        ### Description:
+        Displays the name of the player whose turn is over.
+
+        ### Args:
+        - name (str): The name of the player whose turn is over.
+        &#34;&#34;&#34;
+        print(f&#34;{name}&#39;s turn is over.&#34;)
+
+    def display_game_over(self):
+        &#34;&#34;&#34;Display game over.
+
+        ### Description:
+        Displays &#39;Game over!&#39; when someone successfully reaches 100 points
+        and chooses to hold.
+        &#34;&#34;&#34;
+        print(&#34;Game over!&#34;)
+
+    def display_high_scores(self, highscores):
+        &#34;&#34;&#34;Display high scores.
+
+        ## Description:
+        Displays the local high scores.
+
+        ### Args:
+        - highscores (list): The list of the high scores, containing strings
+          of the names and number of turns to reach 100 points.
+        &#34;&#34;&#34;
+        print(&#34;\nHigh Scores:&#34;)
+        for score in highscores:
+            print(score)
+        print()
+
+    def display_rules(self):
+        &#34;&#34;&#34;Display rules.
+
+        ### Description:
+        Displays the rules of the game.
+        &#34;&#34;&#34;
+        # pylint: disable-msg=C0301
+        print(&#34;Rules:\n- Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to hold.&#34;) # noqa
+        print(&#34;- If the player rolls a 1, they score nothing and their turn ends.&#34;)  # noqa
+        print(&#34;- If the player rolls any other number, it is added to their turn total and the player&#39;s turn continues.&#34;) # noqa
+        print(&#34;- If the player chooses to hold, their turn total is added to their score, and it becomes the next player&#39;s turn.&#34;)  # noqa
+        print(&#34;- The first player to score 100 or more points wins.\n&#34;)
+
+    def ask_player_name(self, players):
+        &#34;&#34;&#34;Ask player name.
+
+        ### Description:
+        Asks the player to enter their name before the game starts.
+
+        ### Args:
+        - players (int): The number of players.
+
+        ### Returns:
+        - str: The name of the player in a single player game
+        - list: The names of both players in a two player game.
+        &#34;&#34;&#34;
+        if players == 1:
+            return input(&#34;\nEnter your name: &#34;)
+
+        player1 = input(&#34;\nEnter the first player&#39;s name: &#34;)
+        player2 = input(&#34;Enter the second player&#39;s name: &#34;)
+        return [player1, player2]
+
+    def display_menu(self):
+        &#34;&#34;&#34;Display menu.
+
+        ### Description:
+        Displays the menu with four different options and returns the input.
+
+        ### Returns:
+        - int: The option the user chose.
+        &#34;&#34;&#34;
+        return input(&#34;1. Start Game\n2. Rules\n3. High Scores\n4. Exit\n&#34;)
+
+    def ask_player_amount(self):
+        &#34;&#34;&#34;Ask player amount.
+
+        ### Description:
+        Ask how many players will play.
+
+        ### Returns:
+        - int: One or two, depending on how many will play.
+        &#34;&#34;&#34;
+        return input(&#34;\n1. One Player\n2. Two Players\n&#34;)
+
+    def display_turn_score(self, points):
+        &#34;&#34;&#34;Display turn score.
+
+        ### Description:
+        Displays the score for the current turn.
+        &#34;&#34;&#34;
+        print(f&#34;Total points this turn: {points}&#34;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="ui.UI.ask_player_amount"><code class="name flex">
+<span>def <span class="ident">ask_player_amount</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Ask player amount.</p>
+<h3 id="description">Description:</h3>
+<p>Ask how many players will play.</p>
+<h3 id="returns">Returns:</h3>
+<ul>
+<li>int: One or two, depending on how many will play.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ask_player_amount(self):
+    &#34;&#34;&#34;Ask player amount.
+
+    ### Description:
+    Ask how many players will play.
+
+    ### Returns:
+    - int: One or two, depending on how many will play.
+    &#34;&#34;&#34;
+    return input(&#34;\n1. One Player\n2. Two Players\n&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.ask_player_name"><code class="name flex">
+<span>def <span class="ident">ask_player_name</span></span>(<span>self, players)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Ask player name.</p>
+<h3 id="description">Description:</h3>
+<p>Asks the player to enter their name before the game starts.</p>
+<h3 id="args">Args:</h3>
+<ul>
+<li>players (int): The number of players.</li>
+</ul>
+<h3 id="returns">Returns:</h3>
+<ul>
+<li>str: The name of the player in a single player game</li>
+<li>list: The names of both players in a two player game.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ask_player_name(self, players):
+    &#34;&#34;&#34;Ask player name.
+
+    ### Description:
+    Asks the player to enter their name before the game starts.
+
+    ### Args:
+    - players (int): The number of players.
+
+    ### Returns:
+    - str: The name of the player in a single player game
+    - list: The names of both players in a two player game.
+    &#34;&#34;&#34;
+    if players == 1:
+        return input(&#34;\nEnter your name: &#34;)
+
+    player1 = input(&#34;\nEnter the first player&#39;s name: &#34;)
+    player2 = input(&#34;Enter the second player&#39;s name: &#34;)
+    return [player1, player2]</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.ask_roll_again"><code class="name flex">
+<span>def <span class="ident">ask_roll_again</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Ask user if they want to roll.</p>
+<h3 id="description">Description:</h3>
+<p>Asks the user if they want to roll, accepts an input.</p>
+<h3 id="returns">Returns:</h3>
+<ul>
+<li>string: Whatever the user inputted, will print 'Invalid Input' if
+they input something other than 'y', 'n', 'cheat', 'rename' or 'exit'</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ask_roll_again(self):
+    &#34;&#34;&#34;Ask user if they want to roll.
+
+    ### Description:
+    Asks the user if they want to roll, accepts an input.
+
+    ### Returns:
+    - string: Whatever the user inputted, will print &#39;Invalid Input&#39; if
+      they input something other than &#39;y&#39;, &#39;n&#39;, &#39;cheat&#39;, &#39;rename&#39; or &#39;exit&#39;
+    &#34;&#34;&#34;
+    return input(&#34;Roll? [y/n]\n&#34;).lower()</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_bust"><code class="name flex">
+<span>def <span class="ident">display_bust</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display when user busts.</p>
+<h3 id="description">Description:</h3>
+<p>This is printed when the player rolls a one.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_bust(self):
+    &#34;&#34;&#34;Display when user busts.
+
+    ### Description:
+    This is printed when the player rolls a one.
+    &#34;&#34;&#34;
+    print(&#34;Bust! Your turn is over.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_game_over"><code class="name flex">
+<span>def <span class="ident">display_game_over</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display game over.</p>
+<h3 id="description">Description:</h3>
+<p>Displays 'Game over!' when someone successfully reaches 100 points
+and chooses to hold.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_game_over(self):
+    &#34;&#34;&#34;Display game over.
+
+    ### Description:
+    Displays &#39;Game over!&#39; when someone successfully reaches 100 points
+    and chooses to hold.
+    &#34;&#34;&#34;
+    print(&#34;Game over!&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_high_scores"><code class="name flex">
+<span>def <span class="ident">display_high_scores</span></span>(<span>self, highscores)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display high scores.</p>
+<h2 id="description">Description:</h2>
+<p>Displays the local high scores.</p>
+<h3 id="args">Args:</h3>
+<ul>
+<li>highscores (list): The list of the high scores, containing strings
+of the names and number of turns to reach 100 points.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_high_scores(self, highscores):
+    &#34;&#34;&#34;Display high scores.
+
+    ## Description:
+    Displays the local high scores.
+
+    ### Args:
+    - highscores (list): The list of the high scores, containing strings
+      of the names and number of turns to reach 100 points.
+    &#34;&#34;&#34;
+    print(&#34;\nHigh Scores:&#34;)
+    for score in highscores:
+        print(score)
+    print()</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_menu"><code class="name flex">
+<span>def <span class="ident">display_menu</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display menu.</p>
+<h3 id="description">Description:</h3>
+<p>Displays the menu with four different options and returns the input.</p>
+<h3 id="returns">Returns:</h3>
+<ul>
+<li>int: The option the user chose.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_menu(self):
+    &#34;&#34;&#34;Display menu.
+
+    ### Description:
+    Displays the menu with four different options and returns the input.
+
+    ### Returns:
+    - int: The option the user chose.
+    &#34;&#34;&#34;
+    return input(&#34;1. Start Game\n2. Rules\n3. High Scores\n4. Exit\n&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_roll"><code class="name flex">
+<span>def <span class="ident">display_roll</span></span>(<span>self, roll)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display the roll.</p>
+<h3 id="description">Description:</h3>
+<p>Displays the result of a roll.</p>
+<h3 id="args">Args:</h3>
+<ul>
+<li>roll (int): The result of the roll</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_roll(self, roll):
+    &#34;&#34;&#34;Display the roll.
+
+    ### Description:
+    Displays the result of a roll.
+
+    ### Args:
+    - roll (int): The result of the roll
+    &#34;&#34;&#34;
+    print(f&#34;Roll: {roll}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_rules"><code class="name flex">
+<span>def <span class="ident">display_rules</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display rules.</p>
+<h3 id="description">Description:</h3>
+<p>Displays the rules of the game.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_rules(self):
+    &#34;&#34;&#34;Display rules.
+
+    ### Description:
+    Displays the rules of the game.
+    &#34;&#34;&#34;
+    # pylint: disable-msg=C0301
+    print(&#34;Rules:\n- Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to hold.&#34;) # noqa
+    print(&#34;- If the player rolls a 1, they score nothing and their turn ends.&#34;)  # noqa
+    print(&#34;- If the player rolls any other number, it is added to their turn total and the player&#39;s turn continues.&#34;) # noqa
+    print(&#34;- If the player chooses to hold, their turn total is added to their score, and it becomes the next player&#39;s turn.&#34;)  # noqa
+    print(&#34;- The first player to score 100 or more points wins.\n&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_scores"><code class="name flex">
+<span>def <span class="ident">display_scores</span></span>(<span>self, player1, player2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display scores.</p>
+<h3 id="description">Description:</h3>
+<p>Displays the current scores of the game between the two players,
+or player and computer. This is printed every time a player
+is about to roll.</p>
+<h3 id="args">Args:</h3>
+<ul>
+<li>player1 (obj): The object of the first player.</li>
+<li>player2 (obj): The object of the second player.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_scores(self, player1, player2):
+    &#34;&#34;&#34;Display scores.
+
+    ### Description:
+    Displays the current scores of the game between the two players,
+    or player and computer. This is printed every time a player
+    is about to roll.
+
+    ### Args:
+    - player1 (obj): The object of the first player.
+    - player2 (obj): The object of the second player.
+    &#34;&#34;&#34;
+    # pylint: disable-msg=C0301
+    print(&#34;\n---------------\n&#34;)
+    print(f&#34;Current Scores:\n{player1.name}: {player1.score}\n{player2.name}: {player2.score}\n&#34;) # noqa</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_turn"><code class="name flex">
+<span>def <span class="ident">display_turn</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display turn.</p>
+<h3 id="description">Description:</h3>
+<p>Displays whose turn it is.</p>
+<h3 id="args">Args:</h3>
+<ul>
+<li>name (string): The name of the player whose turn it is.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_turn(self, name):
+    &#34;&#34;&#34;Display turn.
+
+    ### Description:
+    Displays whose turn it is.
+
+    ### Args:
+    - name (string): The name of the player whose turn it is.
+    &#34;&#34;&#34;
+    print(f&#34;{name}&#39;s turn!&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_turn_end"><code class="name flex">
+<span>def <span class="ident">display_turn_end</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display turn end.</p>
+<h3 id="description">Description:</h3>
+<p>Displays the name of the player whose turn is over.</p>
+<h3 id="args">Args:</h3>
+<ul>
+<li>name (str): The name of the player whose turn is over.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_turn_end(self, name):
+    &#34;&#34;&#34;Display turn end.
+
+    ### Description:
+    Displays the name of the player whose turn is over.
+
+    ### Args:
+    - name (str): The name of the player whose turn is over.
+    &#34;&#34;&#34;
+    print(f&#34;{name}&#39;s turn is over.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_turn_score"><code class="name flex">
+<span>def <span class="ident">display_turn_score</span></span>(<span>self, points)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display turn score.</p>
+<h3 id="description">Description:</h3>
+<p>Displays the score for the current turn.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_turn_score(self, points):
+    &#34;&#34;&#34;Display turn score.
+
+    ### Description:
+    Displays the score for the current turn.
+    &#34;&#34;&#34;
+    print(f&#34;Total points this turn: {points}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="ui.UI.display_welcome"><code class="name flex">
+<span>def <span class="ident">display_welcome</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Welcome.</p>
+<h3 id="description">Description:</h3>
+<p>Prints a simple welcome message when the game starts.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_welcome(self):
+    &#34;&#34;&#34;Welcome.
+
+    ### Description:
+    Prints a simple welcome message when the game starts.
+    &#34;&#34;&#34;
+    print(&#34;\nWelcome to Pig!&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ui.UI" href="#ui.UI">UI</a></code></h4>
+<ul class="two-column">
+<li><code><a title="ui.UI.ask_player_amount" href="#ui.UI.ask_player_amount">ask_player_amount</a></code></li>
+<li><code><a title="ui.UI.ask_player_name" href="#ui.UI.ask_player_name">ask_player_name</a></code></li>
+<li><code><a title="ui.UI.ask_roll_again" href="#ui.UI.ask_roll_again">ask_roll_again</a></code></li>
+<li><code><a title="ui.UI.display_bust" href="#ui.UI.display_bust">display_bust</a></code></li>
+<li><code><a title="ui.UI.display_game_over" href="#ui.UI.display_game_over">display_game_over</a></code></li>
+<li><code><a title="ui.UI.display_high_scores" href="#ui.UI.display_high_scores">display_high_scores</a></code></li>
+<li><code><a title="ui.UI.display_menu" href="#ui.UI.display_menu">display_menu</a></code></li>
+<li><code><a title="ui.UI.display_roll" href="#ui.UI.display_roll">display_roll</a></code></li>
+<li><code><a title="ui.UI.display_rules" href="#ui.UI.display_rules">display_rules</a></code></li>
+<li><code><a title="ui.UI.display_scores" href="#ui.UI.display_scores">display_scores</a></code></li>
+<li><code><a title="ui.UI.display_turn" href="#ui.UI.display_turn">display_turn</a></code></li>
+<li><code><a title="ui.UI.display_turn_end" href="#ui.UI.display_turn_end">display_turn_end</a></code></li>
+<li><code><a title="ui.UI.display_turn_score" href="#ui.UI.display_turn_score">display_turn_score</a></code></li>
+<li><code><a title="ui.UI.display_welcome" href="#ui.UI.display_welcome">display_welcome</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
