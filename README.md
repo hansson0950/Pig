@@ -4,7 +4,7 @@
 This Python project is an implementation of the classic game of Pig, a simple dice game where two players take turns rolling a die, with the goal of being the first player to reach a certain score threshold. In this implementation, the score threshold is set to 100.
 
 ## Installation
-You can download the project files from the GitHub repository at https://github.com/hansson0950/Pig. Once downloaded, you can navigate to the project directory and run the game using the following command: <application/game.py>. 
+You can download the project files from the GitHub repository at https://github.com/hansson0950/Pig. Once downloaded, you can navigate to the project directory and run the game using the following command: <application\game.py>. 
 
 ## Usage
 When first starting the program, it will prompt the user with a main menu. They get the following options: "1. Start Game, 2. Rules, 3. High Scores and 4. Exit". 
@@ -32,7 +32,7 @@ This will run all of the unittests in the tests directory and report the results
 - ui.py: Manages almost, if not all, prints to the terminal.
 
 ## Documentation
-It is possible to generate documentation from the code and the python docstrings. To do this, navigate to the folder which contains the classes you would like to create documentation for. Then, use the command <python -m pdoc3 --html <class_name.py>> to generate documentation as HTML.
+It is possible to generate documentation from the code and the python docstrings. To do this, navigate to the folder which contains the classes you would like to create documentation for. Then, use the command <python -m pdoc3 --html class_name.py> to generate documentation as HTML.
 
 It is also possible to generate UML diagrams for the classes as well as the packages. To do this, navigate to the folder which contains the classes you would like to create UML diagrams for. Then, use the command <pyreverse dice.py> and then <dot -Tpng classes.dot -o classes.png> to get a .png file. You can do the same for the packages with the command <dot -Tpng packages.dot -o packages.png>.
 

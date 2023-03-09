@@ -1,1 +1,1 @@
-No external packages are used.
+A correct way of setting up python and its path variable is required to run all commands through a terminal.
