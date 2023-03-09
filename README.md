@@ -17,6 +17,13 @@ This will run all of the unittests in the tests directory and report the results
 - high_score.py: Handles all high scores by reading and writing to the file called high_scores.txt.
 - ui.py: Manages almost, if not all, prints to the terminal.
 
+## Documentation
+It is possible to generate documentation from the code and the python docstrings. To do this, navigate to the folder that contains the classes you would like to create documentation for. Then, use the command <python -m pdoc3 --html <class_name.py>> to generate documentation as HTML.
+
+It is also possible to generate UML diagrams for the classes as well as the packages. To do this, navigate to the folder that contains the classes you would like to create UML diagrams for. Then, use the command <pyreverse dice.py> and then <dot -Tpng classes.dot -o classes.png> to get a .png file. You can do the same for the packages with the command <dot -Tpng packages.dot -o packages.png>.
+
+Note: This requires installation of some necessary softwares such as chocolatey and graphviz.
+
 ## Contributing
 If you would like to contribute to this project, please fork the repository and submit a pull request with your changes. Before submitting a pull request, please make sure that your changes do not break any of the existing unittests and that any new code is properly documented.
 
