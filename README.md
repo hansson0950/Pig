@@ -26,7 +26,7 @@ This project also includes a suite of unittests to test the various functions of
 This will run all of the unittests in the tests directory and report the results. The unittests cover the following modules:
 - game.py: This class starts the program and handles all the necessary logic and method calls.
 - player.py: Creates an object of a player and handles most available moves a player can make inside the game.
-- computer.py: Inherits the player class, has its own logic for when to roll or hold.
+- computer.py: Inherits the player class, has its own logic for when to roll or hold. The computer will roll until it reaches a turn score of 20 or more,       then it will hold. If the total score + turn score equals 100 or more, it will hold.
 - dice.py: Responsible for the dice rolls.
 - high_score.py: Handles all high scores by reading and writing to the file called high_scores.txt.
 - ui.py: Manages almost, if not all, prints to the terminal.
