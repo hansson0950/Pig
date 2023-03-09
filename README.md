@@ -4,7 +4,21 @@
 This Python project is an implementation of the classic game of Pig, a simple dice game where two players take turns rolling a die, with the goal of being the first player to reach a certain score threshold. In this implementation, the score threshold is set to 100.
 
 ## Installation
-You can download the project files from the GitHub repository at https://github.com/hansson0950/Pig. Once downloaded, you can navigate to the project directory and run the game using the following command: <application/game.py>.
+You can download the project files from the GitHub repository at https://github.com/hansson0950/Pig. Once downloaded, you can navigate to the project directory and run the game using the following command: <application/game.py>. 
+
+## Usage
+When first starting the program, it will prompt the user with a main menu. They get the following options: "1. Start Game, 2. Rules, 3. High Scores and 4. Exit". 
+- Option 2 will display the set of rules we chose to use in our version of the game. 
+- Option 3 will display the five best scores. The highest scores are determined by the number of turns it took to reach 100 points.
+- Option 4 will shut down the program.
+- Option 1 will start by asking the user how many players will play. They can choose either one player or two players. Choosing one player will start a game against the computer. Choosing two players will start the game with two players.
+
+When the game starts, the game will ask you if you would like to roll or hold. At this time, you can choose a number of options even though only [y/n] is prompted.
+- <y> rolls the die and adds the number of the die to the current turn points. However, if the player rolls a 1, they will get a bust. Current turn points     are lost and the turn goes over to the other player.
+- <n> does not roll the die and instead adds the current turn points to the total score.
+- <rename> lets the user rename themselves in the midst of an on-going game. 
+- <cheat> gives the player 100 points, which means that the user can hold their next move and win (for testing purposes only).
+- <exit> quits the current game and navigates the user back to the main menu.
 
 ## Unittests
 This project also includes a suite of unittests to test the various functions of the game. To run the unittests, navigate to the project directory and run the following command: <python -m unittest discover -s unit_tests>.
