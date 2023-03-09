@@ -14,11 +14,11 @@ When first starting the program, it will prompt the user with a main menu. They 
 - Option 1 will start by asking the user how many players will play. They can choose either one player or two players. Choosing one player will start a game against the computer. Choosing two players will start the game with two players.
 
 When the game starts, the game will ask you if you would like to roll or hold. At this time, you can choose a number of options even though only [y/n] is prompted.
-- <y> rolls the die and adds the number of the die to the current turn points. However, if the player rolls a 1, they will get a bust. Current turn points     are lost and the turn goes over to the other player.
-- <n> does not roll the die and instead adds the current turn points to the total score.
-- <rename> lets the user rename themselves in the midst of an on-going game. 
-- <cheat> gives the player 100 points, which means that the user can hold their next move and win (for testing purposes only).
-- <exit> quits the current game and navigates the user back to the main menu.
+- "y" rolls the die and adds the number of the die to the current turn points. However, if the player rolls a 1, they will get a bust. Current turn points     are lost and the turn goes over to the other player.
+- "n" does not roll the die and instead adds the current turn points to the total score.
+- "rename" lets the user rename themselves in the midst of an on-going game. 
+- "cheat" gives the player 100 points, which means that the user can hold their next move and win (for testing purposes only).
+- "exit" quits the current game and navigates the user back to the main menu.
 
 ## Unittests
 This project also includes a suite of unittests to test the various functions of the game. To run the unittests, navigate to the project directory and run the following command: <python -m unittest discover -s unit_tests>.
