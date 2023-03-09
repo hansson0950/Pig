@@ -21,7 +21,7 @@ class TestGame(unittest.TestCase):
         self.player1 = Player("John")
         self.player2 = ComputerPlayer()
         self.game = Game()
-        self.ui = UI()
+        self.ui = UI()   # pylint: disable-msg=C0103
 
     @patch.object(Game, "game_two_players", return_value=None)
     @patch.object(Game, "game_one_player", return_value=None)
